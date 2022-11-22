@@ -17,7 +17,7 @@ public class TestTask {
     }
 
     @Test
-    public void testThreadedTask() throws InterruptedException {
+    public void testTaskOnThread() throws InterruptedException {
         int threadId = 1;
         long taskLengthMs = 250;
         Task task = new Task(threadId, taskLengthMs);
