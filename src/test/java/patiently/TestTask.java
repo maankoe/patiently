@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TestSomething {
+public class TestTask {
     @Test
     public void testTask() {
         int threadId = 1;
