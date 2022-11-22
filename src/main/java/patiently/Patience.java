@@ -1,20 +1,14 @@
 package patiently;
 
-
-import java.util.function.Supplier;
-
-public class PatientAssertion<T> {
-    private final Supplier<T> test;
+public abstract class Patience<T> {
     private final int retries = 10;
 
-    public PatientAssertion(Supplier<T> test) {
-        this.test = test;
-    }
+    protected abstract T _test();
 
     public T test() {
         for (int i=0;i<this.retries;i++) {
             try {
-                return test.get();
+                return this._test();
             } catch (Throwable ignored) {}
             try {
                 Thread.sleep(100);
@@ -22,6 +16,6 @@ public class PatientAssertion<T> {
                 throw new RuntimeException(e);
             }
         }
-        return test.get();
+        return this._test();
     }
 }

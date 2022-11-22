@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class TestPatientlyVerify {
+public class TestPatientVerify {
     @Test
     public void testTask() {
         Task.ResultBox resultBox = mock(Task.ResultBox.class);

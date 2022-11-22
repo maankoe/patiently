@@ -6,12 +6,12 @@ import java.util.concurrent.Executors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class TestPatiently {
+public class TestPatientAssert {
     @Test
     public void testTask() {
         Task task = new Task(0);
         task.run();
-        new PatientAssertion<>(() -> assertThat(task.finished()).isTrue()).test();
+        new PatientAssert<>(() -> assertThat(task.finished()).isTrue()).test();
     }
 
     @Test
@@ -19,7 +19,7 @@ public class TestPatiently {
         long taskLengthMs = 250;
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientAssertion<>(() -> assertThat(task.finished()).isTrue()).test();
+        new PatientAssert<>(() -> assertThat(task.finished()).isTrue()).test();
     }
 
     @Test
@@ -27,6 +27,6 @@ public class TestPatiently {
         long taskLengthMs = 250;
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientAssertion<>(() -> assertThat(task.finished())).test().isFalse();
+        new PatientAssert<>(() -> assertThat(task.finished())).test().isFalse();
     }
 }
