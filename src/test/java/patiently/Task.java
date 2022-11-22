@@ -1,16 +1,30 @@
 package patiently;
 
 public class Task implements Runnable {
-    private final long taskLengthMs;
-    private final int threadId;
-    private int result = -1;
-    public Task(int threadId, long taskLengthMs) {
-        this.threadId = threadId;
-        this.taskLengthMs = taskLengthMs;
+    static class ResultBox {
+        private boolean finished = false;
+        public void setFinished() {
+            this.finished = true;
+        }
+        public boolean getFinished() {
+            return this.finished;
+        }
     }
 
-    public int result() {
-        return this.result;
+    private final long taskLengthMs;
+    private ResultBox resultBox;
+
+    public Task(long taskLengthMs) {
+        this(taskLengthMs, new ResultBox());
+    }
+
+    public Task(long taskLengthMs, ResultBox resultBox) {
+        this.taskLengthMs = taskLengthMs;
+        this.resultBox = resultBox;
+    }
+
+    public boolean finished() {
+        return this.resultBox.getFinished();
     }
 
     @Override
@@ -20,6 +34,6 @@ public class Task implements Runnable {
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        this.result = this.threadId;
+        this.resultBox.setFinished();
     }
 }

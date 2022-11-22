@@ -9,27 +9,24 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class TestPatiently {
     @Test
     public void testTask() {
-        int threadId = 1;
-        Task task = new Task(threadId, 0);
+        Task task = new Task(0);
         task.run();
-        new PatientAssertion<>(() -> assertThat(task.result()).isEqualTo(threadId)).test();
+        new PatientAssertion<>(() -> assertThat(task.finished()).isTrue()).test();
     }
 
     @Test
     public void testThreadedTask() {
-        int threadId = 1;
         long taskLengthMs = 250;
-        Task task = new Task(threadId, taskLengthMs);
+        Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientAssertion<>(() -> assertThat(task.result()).isEqualTo(threadId)).test();
+        new PatientAssertion<>(() -> assertThat(task.finished()).isTrue()).test();
     }
 
     @Test
     public void testThreadedTaskTooEarly() {
-        int threadId = 1;
         long taskLengthMs = 250;
-        Task task = new Task(threadId, taskLengthMs);
+        Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientAssertion<>(() -> assertThat(task.result())).test().isNotEqualTo(threadId);
+        new PatientAssertion<>(() -> assertThat(task.finished())).test().isFalse();
     }
 }
