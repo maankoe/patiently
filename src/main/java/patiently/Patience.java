@@ -1,11 +1,13 @@
 package patiently;
 
+import java.util.Optional;
+
 public abstract class Patience<T> {
     private final int retries = 10;
 
-    protected abstract T _test();
+    protected abstract Optional<T> _test();
 
-    public T test() {
+    public Optional<T> test() {
         for (int i=0;i<this.retries;i++) {
             try {
                 return this._test();

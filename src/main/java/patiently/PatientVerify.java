@@ -1,5 +1,7 @@
 package patiently;
 
+import java.util.Optional;
+
 public class PatientVerify extends Patience<Void> {
     private final Runnable test;
 
@@ -7,8 +9,8 @@ public class PatientVerify extends Patience<Void> {
         this.test = test;
     }
 
-    public Void _test() {
+    public Optional<Void> _test() {
         test.run();
-        return null;
+        return Optional.empty();
     }
 }

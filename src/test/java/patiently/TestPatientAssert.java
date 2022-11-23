@@ -27,6 +27,6 @@ public class TestPatientAssert {
         long taskLengthMs = 250;
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientAssert<>(() -> assertThat(task.finished())).test().isFalse();
+        new PatientAssert<>(() -> assertThat(task.finished())).test().get().isFalse();
     }
 }
