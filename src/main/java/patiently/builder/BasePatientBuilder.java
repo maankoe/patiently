@@ -9,11 +9,11 @@ abstract class BasePatientBuilder<S extends BasePatientBuilder<S>> {
         this.retryScheduleBuilder = new RetryScheduleBuilder();
     }
 
-    public <T> PatientAssertBuilder<T> waitFor(final Callable<T> assertion) {
+    public <T> PatientAssertBuilder<T> recheck(final Callable<T> assertion) {
         return new PatientAssertBuilder<>(this.retryScheduleBuilder, assertion);
     }
 
-    public PatientVerifyBuilder waitFor(final Runnable assertion) {
+    public PatientVerifyBuilder recheck(final Runnable assertion) {
         return new PatientVerifyBuilder(this.retryScheduleBuilder, assertion);
     }
 

@@ -1,9 +1,11 @@
 package patiently;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.exceptions.verification.WantedButNotInvoked;
 
 import java.util.concurrent.Executors;
 
+import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -29,10 +31,14 @@ public class TestPatientVerify {
     }
 
     @Test
-    public void testThreadedTaskTooEarly() {
+    public void testThreadedTaskTestFails() {
         Task.ResultBox resultBox = mock(Task.ResultBox.class);
         Task task = new Task(taskLengthMs, resultBox);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientVerify(() -> verify(resultBox).setFinished(), retries).test();
+        RetrySchedule retries = new RetrySchedule(1, new Retry(1));
+        Throwable error = catchThrowable(() ->
+                new PatientVerify(() -> verify(resultBox).setFinished(), retries).test()
+        );
+        assertThat(error).isInstanceOf(WantedButNotInvoked.class);
     }
 }
