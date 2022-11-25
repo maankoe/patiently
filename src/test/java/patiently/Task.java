@@ -12,7 +12,7 @@ public class Task implements Runnable {
     }
 
     private final long taskLengthMs;
-    private ResultBox resultBox;
+    private final ResultBox resultBox;
 
     public Task(long taskLengthMs) {
         this(taskLengthMs, new ResultBox());

@@ -1,16 +1,16 @@
 package patiently.builder;
 
-import patiently.PatientAssert;
+import patiently.PatientCallable;
 
 import java.util.concurrent.Callable;
 
-public class PatientAssertBuilder<T>
-        extends BasePatientBuilder<PatientAssertBuilder<T>>
-        implements Builder<PatientAssert<T>> {
+public class PatientCallableBuilder<T>
+        extends BasePatientBuilder<PatientCallableBuilder<T>>
+        implements Builder<PatientCallable<T>> {
     private final RetryScheduleBuilder retryScheduleBuilder;
     private final Callable<T> assertion;
 
-    public PatientAssertBuilder(
+    public PatientCallableBuilder(
             RetryScheduleBuilder retryScheduleBuilder,
             Callable<T> assertion
     ) {
@@ -18,8 +18,8 @@ public class PatientAssertBuilder<T>
         this.assertion = assertion;
     }
 
-    public PatientAssert<T> build() {
-        return new PatientAssert<>(
+    public PatientCallable<T> build() {
+        return new PatientCallable<>(
                 this.assertion,
                 this.retryScheduleBuilder.build()
         );

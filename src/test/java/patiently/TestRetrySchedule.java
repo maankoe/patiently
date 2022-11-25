@@ -25,7 +25,7 @@ public class TestRetrySchedule {
     }
 
     @Test
-    public void testRetriesPositivePause() throws InterruptedException {
+    public void testRetriesPositivePause() {
         Exception e = catchException(() -> new Retry(0));
         assertThat(e)
                 .isInstanceOf(IllegalArgumentException.class)
@@ -33,7 +33,7 @@ public class TestRetrySchedule {
     }
 
     @Test
-    public void testRetriesPositiveMaxRetries() throws InterruptedException {
+    public void testRetriesPositiveMaxRetries() {
         Exception e = catchException(() -> new RetrySchedule(0, mock(Retry.class)));
         assertThat(e)
                 .isInstanceOf(IllegalArgumentException.class)

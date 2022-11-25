@@ -4,10 +4,10 @@ package patiently;
 import java.util.Optional;
 import java.util.concurrent.Callable;
 
-public class PatientAssert<T> extends Patience<T> {
+public class PatientCallable<T> extends Patience<T> {
     private final Callable<T> test;
 
-    public PatientAssert(Callable<T> test, RetrySchedule retries) {
+    public PatientCallable(Callable<T> test, RetrySchedule retries) {
         super(retries);
         this.test = test;
     }

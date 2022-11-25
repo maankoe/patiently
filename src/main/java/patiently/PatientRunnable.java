@@ -2,10 +2,10 @@ package patiently;
 
 import java.util.Optional;
 
-public class PatientVerify extends Patience<Void> {
+public class PatientRunnable extends Patience<Void> {
     private final Runnable test;
 
-    public PatientVerify(Runnable test, RetrySchedule retries) {
+    public PatientRunnable(Runnable test, RetrySchedule retries) {
         super(retries);
         this.test = test;
     }

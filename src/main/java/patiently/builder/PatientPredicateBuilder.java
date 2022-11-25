@@ -1,24 +1,25 @@
 package patiently.builder;
 
+import patiently.PatientPredicate;
 
-import patiently.PatientVerify;
+import java.util.function.Supplier;
 
-public class PatientVerifyBuilder
-        extends BasePatientBuilder<PatientVerifyBuilder>
-        implements Builder<PatientVerify> {
+public class PatientPredicateBuilder
+        extends BasePatientBuilder<PatientPredicateBuilder>
+        implements Builder<PatientPredicate> {
     private final RetryScheduleBuilder retryScheduleBuilder;
-    private final Runnable assertion;
+    private final Supplier<Boolean> assertion;
 
-    public PatientVerifyBuilder(
+    public PatientPredicateBuilder(
             RetryScheduleBuilder retryScheduleBuilder,
-            Runnable assertion
+            Supplier<Boolean> assertion
     ) {
         this.retryScheduleBuilder = retryScheduleBuilder;
         this.assertion = assertion;
     }
 
-    public PatientVerify build() {
-        return new PatientVerify(
+    public PatientPredicate build() {
+        return new PatientPredicate(
                 this.assertion,
                 this.retryScheduleBuilder.build()
         );

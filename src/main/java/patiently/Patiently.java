@@ -1,19 +1,24 @@
 package patiently;
 
 import patiently.builder.PatientBuilder;
-import patiently.builder.PatientAssertBuilder;
-import patiently.builder.PatientVerifyBuilder;
+import patiently.builder.PatientCallableBuilder;
+import patiently.builder.PatientPredicateBuilder;
+import patiently.builder.PatientRunnableBuilder;
 
 import java.util.concurrent.Callable;
-import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 
 public class Patiently {
 
-    public static <T> PatientAssertBuilder<T> recheck(Callable<T> test) {
+    public static <T> PatientCallableBuilder<T> recheck(Callable<T> test) {
         return new PatientBuilder().recheck(test);
     }
 
-    public static PatientVerifyBuilder recheck(Runnable test) {
+    public static PatientRunnableBuilder recheck(Runnable test) {
+        return new PatientBuilder().recheck(test);
+    }
+
+    public static PatientPredicateBuilder recheck(Supplier<Boolean> test) {
         return new PatientBuilder().recheck(test);
     }
 

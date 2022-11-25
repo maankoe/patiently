@@ -1,13 +1,18 @@
 package patiently.builder;
 
 import java.util.concurrent.Callable;
+import java.util.function.Supplier;
 
 public class PatientBuilder extends BasePatientBuilder<PatientBuilder> {
-    public <T> PatientAssertBuilder<T> recheck(final Callable<T> assertion) {
-        return new PatientAssertBuilder<>(this.retryScheduleBuilder, assertion);
+    public <T> PatientCallableBuilder<T> recheck(final Callable<T> test) {
+        return new PatientCallableBuilder<>(this.retryScheduleBuilder, test);
     }
 
-    public PatientVerifyBuilder recheck(final Runnable assertion) {
-        return new PatientVerifyBuilder(this.retryScheduleBuilder, assertion);
+    public PatientRunnableBuilder recheck(final Runnable test) {
+        return new PatientRunnableBuilder(this.retryScheduleBuilder, test);
+    }
+
+    public PatientPredicateBuilder recheck(final Supplier<Boolean> test) {
+        return new PatientPredicateBuilder(this.retryScheduleBuilder, test);
     }
 }

@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 
 import static org.assertj.core.api.Assertions.*;
 
-public class TestPatientAssert {
+public class TestPatientCallable {
 
     private final RetrySchedule retries = new RetrySchedule(10, new Retry(100));
     private final int taskLengthMs = 250;
@@ -15,14 +15,14 @@ public class TestPatientAssert {
     public void testTask() {
         Task task = new Task(0);
         task.run();
-        new PatientAssert<>(() -> assertThat(task.finished()).isTrue(), retries).test();
+        new PatientCallable<>(() -> assertThat(task.finished()).isTrue(), retries).test();
     }
 
     @Test
     public void testThreadedTask() {
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientAssert<>(() -> assertThat(task.finished()).isTrue(), retries).test();
+        new PatientCallable<>(() -> assertThat(task.finished()).isTrue(), retries).test();
     }
 
     @Test
@@ -31,7 +31,7 @@ public class TestPatientAssert {
         Executors.newSingleThreadExecutor().execute(task);
         RetrySchedule retries = new RetrySchedule(1, new Retry(1));
         Throwable error = catchThrowable(() ->
-                new PatientAssert<>(() -> assertThat(task.finished()).isTrue(), retries).test()
+                new PatientCallable<>(() -> assertThat(task.finished()).isTrue(), retries).test()
         );
         assertThat(error).isInstanceOf(RuntimeException.class);
     }
@@ -40,6 +40,6 @@ public class TestPatientAssert {
     public void testThreadedTaskGetResult() {
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientAssert<>(() -> assertThat(task.finished()), retries).test().get().isFalse();
+        new PatientCallable<>(() -> assertThat(task.finished()), retries).test().get().isFalse();
     }
 }

@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-public class TestPatientVerify {
+public class TestPatientRunnable {
 
     private final RetrySchedule retries = new RetrySchedule(10, new Retry(100));
     private final int taskLengthMs = 250;
@@ -19,7 +19,7 @@ public class TestPatientVerify {
         Task.ResultBox resultBox = mock(Task.ResultBox.class);
         Task task = new Task(0, resultBox);
         task.run();
-        new PatientVerify(() -> verify(resultBox).setFinished(), retries).test();
+        new PatientRunnable(() -> verify(resultBox).setFinished(), retries).test();
     }
 
     @Test
@@ -27,7 +27,7 @@ public class TestPatientVerify {
         Task.ResultBox resultBox = mock(Task.ResultBox.class);
         Task task = new Task(taskLengthMs, resultBox);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientVerify(() -> verify(resultBox).setFinished(), retries).test();
+        new PatientRunnable(() -> verify(resultBox).setFinished(), retries).test();
     }
 
     @Test
@@ -37,7 +37,7 @@ public class TestPatientVerify {
         Executors.newSingleThreadExecutor().execute(task);
         RetrySchedule retries = new RetrySchedule(1, new Retry(1));
         Throwable error = catchThrowable(() ->
-                new PatientVerify(() -> verify(resultBox).setFinished(), retries).test()
+                new PatientRunnable(() -> verify(resultBox).setFinished(), retries).test()
         );
         assertThat(error).isInstanceOf(WantedButNotInvoked.class);
     }
