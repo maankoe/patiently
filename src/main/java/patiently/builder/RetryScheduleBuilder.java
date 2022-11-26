@@ -4,23 +4,23 @@ import patiently.Retry;
 import patiently.RetrySchedule;
 
 public class RetryScheduleBuilder implements Builder<RetrySchedule> {
-    private long time;
-    private int maxRetries;
+    private long pauseMs;
+    private long maxTimeMs;
 
-    public RetryScheduleBuilder withTime(final long time) {
-        this.time = time;
-        return this;
+    public void setPauseMs(final long pauseMs) {
+        this.pauseMs = pauseMs;
     }
 
-    public RetryScheduleBuilder withRetries(final int maxRetries) {
-        this.maxRetries = maxRetries;
-        return this;
+    public void setMaxTimeMs(long maxTimeMs) {
+        this.maxTimeMs = maxTimeMs;
     }
 
     public RetrySchedule build() {
         return new RetrySchedule(
-                this.maxRetries,
-                new Retry(this.time)
+                (int) (this.maxTimeMs / this.pauseMs),
+                new Retry(this.pauseMs)
         );
     }
+
+
 }

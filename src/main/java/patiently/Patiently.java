@@ -1,6 +1,5 @@
 package patiently;
 
-import patiently.builder.PatientBuilder;
 import patiently.builder.PatientCallableBuilder;
 import patiently.builder.PatientPredicateBuilder;
 import patiently.builder.PatientRunnableBuilder;
@@ -10,38 +9,27 @@ import java.util.function.Supplier;
 
 public class Patiently {
 
-    public static <T> PatientCallableBuilder<T> recheck(Callable<T> test) {
-        return new PatientBuilder().recheck(test);
+    public static <T> PatientCallableBuilder<T> test(Callable<T> test) {
+        return new PatientCallableBuilder<>(test);
     }
 
-    public static PatientRunnableBuilder recheck(Runnable test) {
-        return new PatientBuilder().recheck(test);
+    public static <T> PatientRunnableBuilder test(Runnable test) {
+        return new PatientRunnableBuilder(test);
     }
 
-    public static PatientPredicateBuilder recheck(Supplier<Boolean> test) {
-        return new PatientBuilder().recheck(test);
+    public static <T> PatientPredicateBuilder test(Supplier<Boolean> test) {
+        return new PatientPredicateBuilder(test);
     }
 
-    public static PatientBuilder retrying(int maxRetries) {
-        return new PatientBuilder().retrying(maxRetries);
+    public static <T> T test(Callable<T> test, int everyMs, long untilMs) {
+        return test(test)
+                .everyMs(everyMs)
+                .untilMs(untilMs);
     }
 
-    public static PatientBuilder every(long pauseMs) {
-        return new PatientBuilder().every(pauseMs);
+    public static void test(Runnable test, int everyMs, long untilMs) {
+        test(test)
+                .everyMs(everyMs)
+                .untilMs(untilMs);
     }
-
-    public static <T> T test(Callable<T> test, int maxRetries, long pauseMs) {
-        return recheck(test)
-                .retrying(maxRetries)
-                .every(pauseMs)
-                .test();
-    }
-
-    public static void test(Runnable test, int maxRetries, long pauseMs) {
-        recheck(test)
-                .retrying(maxRetries)
-                .every(pauseMs)
-                .test();
-    }
-
 }
