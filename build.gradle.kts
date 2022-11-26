@@ -1,8 +1,9 @@
 plugins {
     id("java")
+    id("maven-publish")
 }
 
-group = "patiently"
+group = "maankoe"
 version = "0.1"
 
 repositories {
@@ -17,4 +18,22 @@ dependencies {
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/maankoe/patiently")
+            credentials {
+                username = project.findProperty("gpr.user") as String? ?: "maankoe"
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("GIT_TOKEN")
+            }
+        }
+    }
+    publications {
+        register<MavenPublication>("gpr") {
+            from(components["java"])
+        }
+    }
 }
