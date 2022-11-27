@@ -19,8 +19,8 @@ public class TestBuilder {
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
         Patiently.retry(() -> assertThat(task.finished()).isTrue())
-                .everyMs(everyMs)
-                .untilMs(untilMs);
+                .every(everyMs)
+                .until(untilMs);
     }
 
     @Test
@@ -29,8 +29,8 @@ public class TestBuilder {
         Task task = new Task(taskLengthMs, resultBox);
         Executors.newSingleThreadExecutor().execute(task);
         Patiently.retry(() -> verify(resultBox).setFinished())
-                .everyMs(everyMs)
-                .untilMs(untilMs);
+                .every(everyMs)
+                .until(untilMs);
     }
 
     @Test
@@ -38,7 +38,7 @@ public class TestBuilder {
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
         Patiently.retry(task::finished)
-                .everyMs(everyMs)
-                .untilMs(untilMs);
+                .every(everyMs)
+                .until(untilMs);
     }
 }

@@ -11,7 +11,7 @@ import static org.mockito.Mockito.verify;
 
 public class TestPatientRunnable {
 
-    private final RetrySchedule retries = new RetrySchedule(10, new Retry(100));
+    private final RetrySchedule retries = new RetrySchedule(1000, new Retry(100));
     private final int taskLengthMs = 250;
 
     @Test

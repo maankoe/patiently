@@ -18,10 +18,16 @@ public class TestRetrySchedule {
     }
 
     @Test
-    public void testRetriesIterable() {
-        int maxRetries = 10;
-        RetrySchedule retries = new RetrySchedule(maxRetries, mock(Retry.class));
-        assertThat(Lists.newArrayList(retries)).hasSize(maxRetries);
+    public void testNumberOfRetries() throws InterruptedException {
+        int maxTimeMs = 100;
+        int pauseMs = 10;
+        RetrySchedule retries = new RetrySchedule(maxTimeMs, new Retry(pauseMs));
+        int numRetries = 0;
+        for (Retry retry : retries) {
+            numRetries++;
+            retry.pause();
+        }
+        assertThat(numRetries).isEqualTo(maxTimeMs / pauseMs);
     }
 
     @Test
@@ -37,6 +43,6 @@ public class TestRetrySchedule {
         Exception e = catchException(() -> new RetrySchedule(0, mock(Retry.class)));
         assertThat(e)
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("maxRetries must be positive");
+                .hasMessageContaining("maxTimeMs must be positive");
     }
 }

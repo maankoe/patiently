@@ -17,7 +17,7 @@ public class RetryScheduleBuilder implements Builder<RetrySchedule> {
 
     public RetrySchedule build() {
         return new RetrySchedule(
-                (int) (this.maxTimeMs / this.pauseMs),
+                this.maxTimeMs,
                 new Retry(this.pauseMs)
         );
     }

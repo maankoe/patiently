@@ -23,13 +23,13 @@ public class Patiently {
 
     public static <T> T retry(Callable<T> test, int everyMs, long untilMs) {
         return retry(test)
-                .everyMs(everyMs)
-                .untilMs(untilMs);
+                .every(everyMs)
+                .until(untilMs);
     }
 
     public static void retry(Runnable test, int everyMs, long untilMs) {
         retry(test)
-                .everyMs(everyMs)
-                .untilMs(untilMs);
+                .every(everyMs)
+                .until(untilMs);
     }
 }

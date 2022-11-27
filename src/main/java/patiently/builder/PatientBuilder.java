@@ -11,7 +11,7 @@ public abstract class PatientBuilder<P extends PatientBase<?>, B extends Patient
         this.retryScheduleBuilder = new RetryScheduleBuilder();
     }
 
-    public B everyMs(final long pauseMs) {
+    public B every(final long pauseMs) {
         this.retryScheduleBuilder.setPauseMs(pauseMs);
         return (B) this;
     }
