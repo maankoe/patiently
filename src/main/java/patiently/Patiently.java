@@ -1,7 +1,7 @@
 package patiently;
 
 import patiently.builder.PatientCallableBuilder;
-import patiently.builder.PatientPredicateBuilder;
+import patiently.builder.PatientBooleanBuilder;
 import patiently.builder.PatientRunnableBuilder;
 
 import java.util.concurrent.Callable;
@@ -17,8 +17,8 @@ public class Patiently {
         return new PatientRunnableBuilder(test);
     }
 
-    public static <T> PatientPredicateBuilder retry(Supplier<Boolean> test) {
-        return new PatientPredicateBuilder(test);
+    public static <T> PatientBooleanBuilder retry(Supplier<Boolean> test) {
+        return new PatientBooleanBuilder(test);
     }
 
     public static <T> T retry(Callable<T> test, int everyMs, long untilMs) {

@@ -3,11 +3,11 @@ package patiently;
 import java.util.Optional;
 import java.util.function.Supplier;
 
-public class PatientSupplier extends PatientBase<Void> {
+public class PatientBoolean extends PatientBase<Void> {
 
     private final Supplier<Boolean> supplier;
 
-    public PatientSupplier(Supplier<Boolean> supplier, RetrySchedule retries) {
+    public PatientBoolean(Supplier<Boolean> supplier, RetrySchedule retries) {
         super(retries);
         this.supplier = supplier;
     }

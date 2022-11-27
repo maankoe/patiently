@@ -1,18 +1,18 @@
-//package patiently.builder;
-//
-//import java.util.concurrent.Callable;
-//import java.util.function.Supplier;
-//
-//public class PatientBuilder extends BasePatientBuilder<PatientBuilder> {
-////    public <T> PatientCallableBuilder<T> test(final Callable<T> test) {
-////        return new PatientCallableBuilder<>(this.retryScheduleBuilder, test);
-////    }
-//
-//    public PatientRunnableBuilder test(final Runnable test) {
-//        return new PatientRunnableBuilder(this.retryScheduleBuilder, test);
-//    }
-//
-//    public PatientPredicateBuilder test(final Supplier<Boolean> test) {
-//        return new PatientPredicateBuilder(this.retryScheduleBuilder, test);
-//    }
-//}
+package patiently.builder;
+
+import patiently.PatientBase;
+
+public abstract class PatientBuilder<P extends PatientBase<?>, B extends PatientBuilder<P, B>>
+        implements Builder<P> {
+
+    protected final RetryScheduleBuilder retryScheduleBuilder;
+
+    public PatientBuilder() {
+        this.retryScheduleBuilder = new RetryScheduleBuilder();
+    }
+
+    public B everyMs(final long pauseMs) {
+        this.retryScheduleBuilder.setPauseMs(pauseMs);
+        return (B) this;
+    }
+}
