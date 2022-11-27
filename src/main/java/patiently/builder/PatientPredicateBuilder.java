@@ -1,11 +1,11 @@
 package patiently.builder;
 
-import patiently.PatientPredicate;
+import patiently.PatientSupplier;
 
 import java.util.function.Supplier;
 
 public class PatientPredicateBuilder
-        implements Builder<PatientPredicate> {
+        implements Builder<PatientSupplier> {
 
     private final RetryScheduleBuilder retryScheduleBuilder;
     private final Supplier<Boolean> assertion;
@@ -26,14 +26,14 @@ public class PatientPredicateBuilder
         this.test();
     }
 
-    public PatientPredicate build() {
-        return new PatientPredicate(
+    public PatientSupplier build() {
+        return new PatientSupplier(
                 this.assertion,
                 this.retryScheduleBuilder.build()
         );
     }
 
     protected void test() {
-        this.build().test();
+        this.build().execute();
     }
 }

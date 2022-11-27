@@ -9,26 +9,26 @@ import java.util.function.Supplier;
 
 public class Patiently {
 
-    public static <T> PatientCallableBuilder<T> test(Callable<T> test) {
+    public static <T> PatientCallableBuilder<T> retry(Callable<T> test) {
         return new PatientCallableBuilder<>(test);
     }
 
-    public static <T> PatientRunnableBuilder test(Runnable test) {
+    public static <T> PatientRunnableBuilder retry(Runnable test) {
         return new PatientRunnableBuilder(test);
     }
 
-    public static <T> PatientPredicateBuilder test(Supplier<Boolean> test) {
+    public static <T> PatientPredicateBuilder retry(Supplier<Boolean> test) {
         return new PatientPredicateBuilder(test);
     }
 
-    public static <T> T test(Callable<T> test, int everyMs, long untilMs) {
-        return test(test)
+    public static <T> T retry(Callable<T> test, int everyMs, long untilMs) {
+        return retry(test)
                 .everyMs(everyMs)
                 .untilMs(untilMs);
     }
 
-    public static void test(Runnable test, int everyMs, long untilMs) {
-        test(test)
+    public static void retry(Runnable test, int everyMs, long untilMs) {
+        retry(test)
                 .everyMs(everyMs)
                 .untilMs(untilMs);
     }

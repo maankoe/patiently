@@ -15,14 +15,14 @@ public class TestPatientCallable {
     public void testTask() {
         Task task = new Task(0);
         task.run();
-        new PatientCallable<>(() -> assertThat(task.finished()).isTrue(), retries).test();
+        new PatientCallable<>(() -> assertThat(task.finished()).isTrue(), retries).execute();
     }
 
     @Test
     public void testThreadedTask() {
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientCallable<>(() -> assertThat(task.finished()).isTrue(), retries).test();
+        new PatientCallable<>(() -> assertThat(task.finished()).isTrue(), retries).execute();
     }
 
     @Test
@@ -31,7 +31,7 @@ public class TestPatientCallable {
         Executors.newSingleThreadExecutor().execute(task);
         RetrySchedule retries = new RetrySchedule(1, new Retry(1));
         Throwable error = catchThrowable(() ->
-                new PatientCallable<>(() -> assertThat(task.finished()).isTrue(), retries).test()
+                new PatientCallable<>(() -> assertThat(task.finished()).isTrue(), retries).execute()
         );
         assertThat(error).isInstanceOf(RuntimeException.class);
     }
@@ -40,6 +40,6 @@ public class TestPatientCallable {
     public void testThreadedTaskGetResult() {
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientCallable<>(() -> assertThat(task.finished()), retries).test().get().isFalse();
+        new PatientCallable<>(() -> assertThat(task.finished()), retries).execute().get().isFalse();
     }
 }

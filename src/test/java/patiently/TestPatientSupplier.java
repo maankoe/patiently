@@ -7,7 +7,7 @@ import java.util.concurrent.Executors;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.catchThrowable;
 
-public class TestPatientPredicate {
+public class TestPatientSupplier {
     private final RetrySchedule retries = new RetrySchedule(10, new Retry(100));
     private final int taskLengthMs = 250;
 
@@ -15,14 +15,14 @@ public class TestPatientPredicate {
     public void testTask() {
         Task task = new Task(0);
         task.run();
-        new PatientPredicate(task::finished, retries).test();
+        new PatientSupplier(task::finished, retries).execute();
     }
 
     @Test
     public void testThreadedTask() {
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientPredicate(task::finished, retries).test();
+        new PatientSupplier(task::finished, retries).execute();
     }
 
     @Test
@@ -31,7 +31,7 @@ public class TestPatientPredicate {
         Executors.newSingleThreadExecutor().execute(task);
         RetrySchedule retries = new RetrySchedule(1, new Retry(1));
         Throwable error = catchThrowable(() ->
-                new PatientPredicate(task::finished, retries).test()
+                new PatientSupplier(task::finished, retries).execute()
         );
         assertThat(error).isInstanceOf(IllegalStateException.class);
     }

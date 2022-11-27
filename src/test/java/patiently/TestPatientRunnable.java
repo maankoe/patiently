@@ -19,7 +19,7 @@ public class TestPatientRunnable {
         Task.ResultBox resultBox = mock(Task.ResultBox.class);
         Task task = new Task(0, resultBox);
         task.run();
-        new PatientRunnable(() -> verify(resultBox).setFinished(), retries).test();
+        new PatientRunnable(() -> verify(resultBox).setFinished(), retries).execute();
     }
 
     @Test
@@ -27,7 +27,7 @@ public class TestPatientRunnable {
         Task.ResultBox resultBox = mock(Task.ResultBox.class);
         Task task = new Task(taskLengthMs, resultBox);
         Executors.newSingleThreadExecutor().execute(task);
-        new PatientRunnable(() -> verify(resultBox).setFinished(), retries).test();
+        new PatientRunnable(() -> verify(resultBox).setFinished(), retries).execute();
     }
 
     @Test
@@ -37,7 +37,7 @@ public class TestPatientRunnable {
         Executors.newSingleThreadExecutor().execute(task);
         RetrySchedule retries = new RetrySchedule(1, new Retry(1));
         Throwable error = catchThrowable(() ->
-                new PatientRunnable(() -> verify(resultBox).setFinished(), retries).test()
+                new PatientRunnable(() -> verify(resultBox).setFinished(), retries).execute()
         );
         assertThat(error).isInstanceOf(WantedButNotInvoked.class);
     }

@@ -2,19 +2,19 @@ package patiently;
 
 import java.util.Optional;
 
-public abstract class Patience<T> {
+public abstract class PatientBase<T> {
     private final RetrySchedule retries;
 
-    public Patience(RetrySchedule retries) {
+    public PatientBase(RetrySchedule retries) {
         this.retries = retries;
     }
 
-    protected abstract Optional<T> _test();
+    protected abstract Optional<T> _execute();
 
-    public Optional<T> test() {
+    public Optional<T> execute() {
         for (Retry retry : retries) {
             try {
-                return this._test();
+                return this._execute();
             } catch (Throwable ignored) {}
             try {
                 retry.pause();
@@ -22,6 +22,6 @@ public abstract class Patience<T> {
                 throw new RuntimeException(e);
             }
         }
-        return this._test();
+        return this._execute();
     }
 }

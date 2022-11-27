@@ -34,6 +34,6 @@ public class PatientCallableBuilder<T>
     }
 
     protected T test() {
-        return this.build().test().orElse(null);
+        return this.build().execute().orElse(null);
     }
 }

@@ -32,6 +32,6 @@ public class PatientRunnableBuilder
     }
 
     private void test() {
-        this.build().test();
+        this.build().execute();
     }
 }

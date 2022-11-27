@@ -18,7 +18,7 @@ public class TestBuilder {
     public void testPatientCallable() {
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        Patiently.test(() -> assertThat(task.finished()).isTrue())
+        Patiently.retry(() -> assertThat(task.finished()).isTrue())
                 .everyMs(everyMs)
                 .untilMs(untilMs);
     }
@@ -28,7 +28,7 @@ public class TestBuilder {
         Task.ResultBox resultBox = mock(Task.ResultBox.class);
         Task task = new Task(taskLengthMs, resultBox);
         Executors.newSingleThreadExecutor().execute(task);
-        Patiently.test(() -> verify(resultBox).setFinished())
+        Patiently.retry(() -> verify(resultBox).setFinished())
                 .everyMs(everyMs)
                 .untilMs(untilMs);
     }
@@ -37,7 +37,7 @@ public class TestBuilder {
     public void testPatientPredicate() {
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
-        Patiently.test(task::finished)
+        Patiently.retry(task::finished)
                 .everyMs(everyMs)
                 .untilMs(untilMs);
     }
