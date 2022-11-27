@@ -34,7 +34,7 @@ public class TestBuilder {
     }
 
     @Test
-    public void testPatientPredicate() {
+    public void testPatientBoolean() {
         Task task = new Task(taskLengthMs);
         Executors.newSingleThreadExecutor().execute(task);
         Patiently.retry(task::finished)
