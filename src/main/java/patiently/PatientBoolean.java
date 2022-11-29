@@ -5,16 +5,16 @@ import java.util.function.Supplier;
 
 public class PatientBoolean extends PatientBase<Void> {
 
-    private final Supplier<Boolean> supplier;
+    private final Supplier<Boolean> task;
 
-    public PatientBoolean(Supplier<Boolean> supplier, RetrySchedule retries) {
+    public PatientBoolean(Supplier<Boolean> task, RetrySchedule retries) {
         super(retries);
-        this.supplier = supplier;
+        this.task = task;
     }
 
     @Override
     protected Optional<Void> _execute() {
-        if (!this.supplier.get()) {
+        if (!this.task.get()) {
             throw new IllegalStateException("Result was false");
         }
         return Optional.empty();

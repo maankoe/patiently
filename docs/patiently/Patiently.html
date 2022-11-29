@@ -105,42 +105,42 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T&gt;&nbsp;<a href="builder/PatientRunnableBuilder.html" title="class in patiently.builder">PatientRunnableBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.lang.Runnable)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;runnable)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.lang.Runnable)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;task)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Creates a patient builder for a Runnable (e.g., Mockito.verify in mockito).</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.lang.Runnable,int,long)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;runnable,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.lang.Runnable,int,long)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;task,
  int&nbsp;everyMs,
  long&nbsp;untilMs)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Patiently retries execution of runnable until success (no Exception/Throw) or
+<div class="block">Patiently retries execution of task until success (no Exception/Throw) or
  until specified time have passed.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T&gt;&nbsp;<a href="builder/PatientCallableBuilder.html" title="class in patiently.builder">PatientCallableBuilder</a>&lt;T&gt;</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.util.concurrent.Callable)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Callable.html" title="class or interface in java.util.concurrent" class="external-link">Callable</a>&lt;T&gt;&nbsp;callable)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.util.concurrent.Callable)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Callable.html" title="class or interface in java.util.concurrent" class="external-link">Callable</a>&lt;T&gt;&nbsp;task)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Creates a patient builder for a Callable (e.g., Assertions.assertThat in assertj)</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T&gt;&nbsp;T</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.util.concurrent.Callable,int,long)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Callable.html" title="class or interface in java.util.concurrent" class="external-link">Callable</a>&lt;T&gt;&nbsp;callable,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.util.concurrent.Callable,int,long)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Callable.html" title="class or interface in java.util.concurrent" class="external-link">Callable</a>&lt;T&gt;&nbsp;task,
  int&nbsp;everyMs,
  long&nbsp;untilMs)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Patiently retries execution of callable until success (no Exception/Throw) or
+<div class="block">Patiently retries execution of task until success (no Exception/Throw) or
  until specified time have passed.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T&gt;&nbsp;<a href="builder/PatientBooleanBuilder.html" title="class in patiently.builder">PatientBooleanBuilder</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.util.function.Supplier)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html" title="class or interface in java.util.function" class="external-link">Supplier</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&gt;&nbsp;booleanSupplier)</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.util.function.Supplier)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html" title="class or interface in java.util.function" class="external-link">Supplier</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&gt;&nbsp;task)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Creates a patient builder for a boolean Supplier (e.g., a general boolean evaluation).</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.util.function.Supplier,int,long)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html" title="class or interface in java.util.function" class="external-link">Supplier</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&gt;&nbsp;booleanSupplier,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#retry(java.util.function.Supplier,int,long)" class="member-name-link">retry</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html" title="class or interface in java.util.function" class="external-link">Supplier</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&gt;&nbsp;task,
  int&nbsp;everyMs,
  long&nbsp;untilMs)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
-<div class="block">Patiently retries execution of booleanSupplier until success (it returned true) or
+<div class="block">Patiently retries execution of task until success (it returned true) or
  until specified time have passed.</div>
 </div>
 </div>
@@ -177,13 +177,13 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="retry(java.util.concurrent.Callable)">
 <h3>retry</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type"><a href="builder/PatientCallableBuilder.html" title="class in patiently.builder">PatientCallableBuilder</a>&lt;T&gt;</span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Callable.html" title="class or interface in java.util.concurrent" class="external-link">Callable</a>&lt;T&gt;&nbsp;callable)</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type"><a href="builder/PatientCallableBuilder.html" title="class in patiently.builder">PatientCallableBuilder</a>&lt;T&gt;</span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Callable.html" title="class or interface in java.util.concurrent" class="external-link">Callable</a>&lt;T&gt;&nbsp;task)</span></div>
 <div class="block">Creates a patient builder for a Callable (e.g., Assertions.assertThat in assertj)</div>
 <dl class="notes">
 <dt>Type Parameters:</dt>
-<dd><code>T</code> - Return type of the callable to be evaluated</dd>
+<dd><code>T</code> - Return type of the task to be evaluated</dd>
 <dt>Parameters:</dt>
-<dd><code>callable</code> - The Callable to be evaluated</dd>
+<dd><code>task</code> - The Callable to be evaluated</dd>
 <dt>Returns:</dt>
 <dd>Builder for PatientCallable</dd>
 <dt>See Also:</dt>
@@ -199,11 +199,11 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="retry(java.lang.Runnable)">
 <h3>retry</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type"><a href="builder/PatientRunnableBuilder.html" title="class in patiently.builder">PatientRunnableBuilder</a></span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;runnable)</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type"><a href="builder/PatientRunnableBuilder.html" title="class in patiently.builder">PatientRunnableBuilder</a></span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;task)</span></div>
 <div class="block">Creates a patient builder for a Runnable (e.g., Mockito.verify in mockito).</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>runnable</code> - The Runnable to be evaluated.</dd>
+<dd><code>task</code> - The Runnable to be evaluated.</dd>
 <dt>Returns:</dt>
 <dd>Builder for PatientRunnable.</dd>
 <dt>See Also:</dt>
@@ -219,11 +219,11 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="retry(java.util.function.Supplier)">
 <h3>retry</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type"><a href="builder/PatientBooleanBuilder.html" title="class in patiently.builder">PatientBooleanBuilder</a></span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html" title="class or interface in java.util.function" class="external-link">Supplier</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&gt;&nbsp;booleanSupplier)</span></div>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type"><a href="builder/PatientBooleanBuilder.html" title="class in patiently.builder">PatientBooleanBuilder</a></span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html" title="class or interface in java.util.function" class="external-link">Supplier</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&gt;&nbsp;task)</span></div>
 <div class="block">Creates a patient builder for a boolean Supplier (e.g., a general boolean evaluation).</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>booleanSupplier</code> - The boolean Supplier to be evaluated.</dd>
+<dd><code>task</code> - The boolean Supplier to be evaluated.</dd>
 <dt>Returns:</dt>
 <dd>Builder for PatientBoolean.</dd>
 <dt>See Also:</dt>
@@ -239,20 +239,20 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="retry(java.util.concurrent.Callable,int,long)">
 <h3>retry</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Callable.html" title="class or interface in java.util.concurrent" class="external-link">Callable</a>&lt;T&gt;&nbsp;callable,
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/Callable.html" title="class or interface in java.util.concurrent" class="external-link">Callable</a>&lt;T&gt;&nbsp;task,
  int&nbsp;everyMs,
  long&nbsp;untilMs)</span></div>
-<div class="block">Patiently retries execution of callable until success (no Exception/Throw) or
+<div class="block">Patiently retries execution of task until success (no Exception/Throw) or
  until specified time have passed.</div>
 <dl class="notes">
 <dt>Type Parameters:</dt>
-<dd><code>T</code> - Return type of callable to be evaluated</dd>
+<dd><code>T</code> - Return type of task to be evaluated</dd>
 <dt>Parameters:</dt>
-<dd><code>callable</code> - The Callable to be evaluated.</dd>
+<dd><code>task</code> - The Callable to be evaluated.</dd>
 <dd><code>everyMs</code> - Interval (in milliseconds) between each retry.</dd>
 <dd><code>untilMs</code> - Maximum time (in milliseconds) after which it stops retrying.</dd>
 <dt>Returns:</dt>
-<dd>Return value of callable (if successful). An exception is thrown otherwise.</dd>
+<dd>Return value of task (if successful). An exception is thrown otherwise.</dd>
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list">
@@ -265,14 +265,14 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="retry(java.lang.Runnable,int,long)">
 <h3>retry</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;runnable,
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a>&nbsp;task,
  int&nbsp;everyMs,
  long&nbsp;untilMs)</span></div>
-<div class="block">Patiently retries execution of runnable until success (no Exception/Throw) or
+<div class="block">Patiently retries execution of task until success (no Exception/Throw) or
  until specified time have passed.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>runnable</code> - The Runnable to be evaluated.</dd>
+<dd><code>task</code> - The Runnable to be evaluated.</dd>
 <dd><code>everyMs</code> - Interval (in milliseconds) between each retry.</dd>
 <dd><code>untilMs</code> - Maximum time (in milliseconds) after which it stops retrying.</dd>
 <dt>See Also:</dt>
@@ -287,14 +287,14 @@ loadScripts(document, 'script');</script>
 <li>
 <section class="detail" id="retry(java.util.function.Supplier,int,long)">
 <h3>retry</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html" title="class or interface in java.util.function" class="external-link">Supplier</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&gt;&nbsp;booleanSupplier,
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">retry</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/function/Supplier.html" title="class or interface in java.util.function" class="external-link">Supplier</a>&lt;<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Boolean.html" title="class or interface in java.lang" class="external-link">Boolean</a>&gt;&nbsp;task,
  int&nbsp;everyMs,
  long&nbsp;untilMs)</span></div>
-<div class="block">Patiently retries execution of booleanSupplier until success (it returned true) or
+<div class="block">Patiently retries execution of task until success (it returned true) or
  until specified time have passed.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>booleanSupplier</code> - The boolean Supplier to be evaluated.</dd>
+<dd><code>task</code> - The boolean Supplier to be evaluated.</dd>
 <dd><code>everyMs</code> - Interval (in milliseconds) between each retry.</dd>
 <dd><code>untilMs</code> - Maximum time (in milliseconds) after which it stops retrying.</dd>
 <dt>See Also:</dt>

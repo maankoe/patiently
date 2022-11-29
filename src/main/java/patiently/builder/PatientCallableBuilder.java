@@ -6,16 +6,16 @@ import java.util.concurrent.Callable;
 
 public class PatientCallableBuilder<T> extends TPatientBuilder<T, PatientCallable<T>> {
 
-    private final Callable<T> assertion;
+    private final Callable<T> task;
 
-    public PatientCallableBuilder(Callable<T> assertion) {
+    public PatientCallableBuilder(Callable<T> task) {
         super();
-        this.assertion = assertion;
+        this.task = task;
     }
 
     public PatientCallable<T> build() {
         return new PatientCallable<>(
-                this.assertion,
+                this.task,
                 this.retryScheduleBuilder.build()
         );
     }

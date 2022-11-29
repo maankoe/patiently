@@ -6,16 +6,16 @@ import java.util.function.Supplier;
 
 public class PatientBooleanBuilder extends VoidPatientBuilder<PatientBoolean> {
 
-    private final Supplier<Boolean> assertion;
+    private final Supplier<Boolean> task;
 
-    public PatientBooleanBuilder(Supplier<Boolean> assertion) {
+    public PatientBooleanBuilder(Supplier<Boolean> task) {
         super();
-        this.assertion = assertion;
+        this.task = task;
     }
 
     public PatientBoolean build() {
         return new PatientBoolean(
-                this.assertion,
+                this.task,
                 this.retryScheduleBuilder.build()
         );
     }

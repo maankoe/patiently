@@ -3,15 +3,15 @@ package patiently;
 import java.util.Optional;
 
 public class PatientRunnable extends PatientBase<Void> {
-    private final Runnable runnable;
+    private final Runnable task;
 
-    public PatientRunnable(Runnable runnable, RetrySchedule retries) {
+    public PatientRunnable(Runnable task, RetrySchedule retries) {
         super(retries);
-        this.runnable = runnable;
+        this.task = task;
     }
 
     public Optional<Void> _execute() {
-        runnable.run();
+        task.run();
         return Optional.empty();
     }
 }

@@ -4,16 +4,16 @@ import patiently.PatientRunnable;
 
 public class PatientRunnableBuilder extends VoidPatientBuilder<PatientRunnable> {
 
-    private final Runnable assertion;
+    private final Runnable task;
 
-    public PatientRunnableBuilder(Runnable assertion) {
+    public PatientRunnableBuilder(Runnable task) {
         super();
-        this.assertion = assertion;
+        this.task = task;
     }
 
     public PatientRunnable build() {
         return new PatientRunnable(
-                this.assertion,
+                this.task,
                 this.retryScheduleBuilder.build()
         );
     }
