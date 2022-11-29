@@ -19,7 +19,7 @@ public class TestRetrySchedule {
 
     @Test
     public void testNumberOfRetries() throws InterruptedException {
-        int maxTimeMs = 100;
+        int maxTimeMs = 102; // give it some lee-way
         int pauseMs = 10;
         RetrySchedule retries = new RetrySchedule(maxTimeMs, new Retry(pauseMs));
         int numRetries = 0;
