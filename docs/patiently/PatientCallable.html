@@ -110,7 +110,7 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>protected <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="PatientCallable.html" title="type parameter in PatientCallable">T</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#_execute()" class="member-name-link">_execute</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Single execution of the underlying runnable/function.</div>
+<div class="block">Single execution of the underlying task.</div>
 </div>
 </div>
 </div>
@@ -152,15 +152,15 @@ loadScripts(document, 'script');</script>
 <h3>_execute</h3>
 <div class="member-signature"><span class="modifiers">protected</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="PatientCallable.html" title="type parameter in PatientCallable">T</a>&gt;</span>&nbsp;<span class="element-name">_execute</span>()</div>
 <div class="block"><span class="descfrm-type-label">Description copied from class:&nbsp;<code><a href="PatientBase.html#_execute()">PatientBase</a></code></span></div>
-<div class="block">Single execution of the underlying runnable/function.</div>
+<div class="block">Single execution of the underlying task.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="PatientBase.html#_execute()">_execute</a></code>&nbsp;in class&nbsp;<code><a href="PatientBase.html" title="class in patiently">PatientBase</a>&lt;<a href="PatientCallable.html" title="type parameter in PatientCallable">T</a>&gt;</code></dd>
 <dt>Returns:</dt>
 <dd>If execution is successful (no Exception/Throws), Optional of the
- underlying runnable/function is returned. In cases where this is void (e.g.,
- Runnable), Optional.empty() is provided). If execution is unsuccessful, Exception
- (as defined by the underlying runnable/function) is thrown.</dd>
+ underlying task is returned. In cases where this is void (e.g., Runnable),
+ Optional.empty() is provided). If execution is unsuccessful, Exception
+ (as defined by the underlying task) is thrown.</dd>
 </dl>
 </section>
 </li>
