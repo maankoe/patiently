@@ -11,6 +11,11 @@ public abstract class PatientBuilder<P extends PatientBase<?>, B extends Patient
         this.retryScheduleBuilder = new RetryScheduleBuilder();
     }
 
+    /**
+     * Sets the interval between each retry
+     * @param pauseMs  Interval (in milliseconds) between each retry.
+     * @return this (the builder)
+     */
     public B every(final long pauseMs) {
         this.retryScheduleBuilder.setPauseMs(pauseMs);
         return (B) this;
